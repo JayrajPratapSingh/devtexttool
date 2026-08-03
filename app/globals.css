@@ -1,0 +1,51 @@
+/* Global reset + font tokens. Component colors are theme-driven inline; this
+   only defines the font families the app references (var(--sans) / var(--mono))
+   and a dark default background so there is no white flash before the
+   client-only editor mounts. */
+
+:root {
+  /* --font-sans / --font-mono are provided by next/font (see app/layout.jsx) */
+  --sans: var(--font-sans), system-ui, "Segoe UI", Roboto, sans-serif;
+  --mono: var(--font-mono), ui-monospace, "Cascadia Code", Consolas, monospace;
+  color-scheme: dark;
+  letter-spacing: -0.01em;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+body {
+  /* dark base so first paint (before hydration) is never white */
+  background: #0a0e17;
+  font-family: var(--sans);
+}
+
+#__next,
+main {
+  min-height: 100vh;
+}
+
+/* Visually hidden but available to screen readers and search crawlers. */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
